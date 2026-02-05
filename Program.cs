@@ -34,9 +34,21 @@ internal class Program
 
             Console.WriteLine("RUNNING host.Run()!");
 
+            // write out current timestamp
+            telemetryClient.TrackTrace($"Before Services timestamp: {DateTime.UtcNow}");
+            Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
+
             builder.Services.AddSingleton(new MyService1());
-                        
+
+            // write out current timestamp
+            telemetryClient.TrackTrace($"MyService1 Complete timestamp: {DateTime.UtcNow}");
+            Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
+
             builder.Services.AddSingleton(new MyService2());
+
+            // write out current timestamp
+            telemetryClient.TrackTrace($"MyService2 Complete  timestamp: {DateTime.UtcNow}");
+            Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
 
             builder.Build().Run();
 
