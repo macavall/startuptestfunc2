@@ -89,7 +89,9 @@ public class MyService1 : IMyService1
 
     public string ReturnSomething()
     {
-        return "Hello from MyService1!";
+        string tempString = ReturnSomething();
+
+        return "Hello from MyService1! with + "+ tempString;
     }
 }
 
@@ -110,6 +112,8 @@ public class MyService2 : IMyService2
 
     public string ReturnSomething()
     {
-        return "Hello from MyService2!";
+        string tempString = ReturnSomething();
+
+        return "Hello from MyService2 with + "+ tempString;
     }
 }
