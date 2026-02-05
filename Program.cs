@@ -42,7 +42,7 @@ internal class Program
             telemetryClient.TrackTrace($"MyService1 Complete timestamp: {DateTime.UtcNow}");
             Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
 
-            builder.Services.AddSingleton(new MyService2());
+            builder.Services.AddSingleton<IMyService2, MyService2>();
 
             // write out current timestamp
             telemetryClient.TrackTrace($"MyService2 Complete  timestamp: {DateTime.UtcNow}");
