@@ -8,10 +8,10 @@ namespace proj2;
 public class http1
 {
     private readonly ILogger<http1> _logger;
-    private readonly MyService1 _myService1;
-    private readonly MyService2 _myService2;
+    private readonly IMyService1 _myService1;
+    private readonly IMyService2 _myService2;
 
-    public http1(ILogger<http1> logger, MyService1 myService1, MyService2 myService2)
+    public http1(ILogger<http1> logger, IMyService1 myService1, IMyService2 myService2)
     {
         _logger = logger;
         _myService1 = myService1;
