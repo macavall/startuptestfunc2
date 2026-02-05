@@ -34,19 +34,19 @@ internal class Program
 
             // write out current timestamp
             telemetryClient.TrackTrace($"Before Services timestamp: {DateTime.UtcNow}");
-            Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
+            Console.WriteLine($"Before Services timestamp: {DateTime.UtcNow}");
 
             builder.Services.AddSingleton<IMyService1, MyService1>();
 
             // write out current timestamp
             telemetryClient.TrackTrace($"MyService1 Complete timestamp: {DateTime.UtcNow}");
-            Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
+            Console.WriteLine($"MyService1 Complete timestamp: {DateTime.UtcNow}");
 
             builder.Services.AddSingleton<IMyService2, MyService2>();
 
             // write out current timestamp
             telemetryClient.TrackTrace($"MyService2 Complete  timestamp: {DateTime.UtcNow}");
-            Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
+            Console.WriteLine($"MyService2 Complete timestamp: {DateTime.UtcNow}");
 
             // Flush telemetry before starting the host to ensure startup logs are sent
             telemetryClient.Flush();
@@ -64,12 +64,12 @@ internal class Program
 
 public interface IMyService1
 {
-    string ReturnSomething();
+    void MyService1Start();
 }
 
 public interface IMyService2
 {
-    string ReturnSomething();
+    void MyService2Start();
 }
 
 public class MyService1 : IMyService1
