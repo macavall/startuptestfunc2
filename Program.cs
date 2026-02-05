@@ -52,14 +52,15 @@ public class MyService1
 {
     public MyService1()
     {
-        Thread.Sleep(this.GetRandomNumber() * 1000);
+        int sleepNum = Convert.ToInt32(Environment.GetEnvironmentVariable("SLEEP_SECONDS"));
+        Thread.Sleep(this.GetRandomNumber(sleepNum) * 1000);
     }
 
     // write random generator between 1 and 60 
-    private int GetRandomNumber()
+    private int GetRandomNumber(int max)
     {
         Random random = new Random();
-        return random.Next(1, 61);
+        return random.Next(1, max + 1);
     }
 
     public string ReturnSomething()
@@ -73,14 +74,15 @@ public class MyService2
 {
     public MyService2()
     {
-        Thread.Sleep(this.GetRandomNumber() * 1000);
+        int sleepNum = Convert.ToInt32(Environment.GetEnvironmentVariable("SLEEP_SECONDS"));
+        Thread.Sleep(this.GetRandomNumber(sleepNum) * 1000);
     }
 
     // write random generator between 1 and 60 
-    private int GetRandomNumber()
+    private int GetRandomNumber(int max)
     {
         Random random = new Random();
-        return random.Next(1, 61);
+        return random.Next(1, max + 1);
     }
 
     public string ReturnSomething()
