@@ -23,8 +23,8 @@ public class http1
     {
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-        _logger.LogInformation(_myService1.ReturnSomething());
-        _logger.LogInformation(_myService2.ReturnSomething());
+        _myService1.MyService1Start();
+        _myService2.MyService2Start();
 
         return new OkObjectResult("Welcome to Azure Functions!");
     }
