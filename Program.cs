@@ -77,7 +77,7 @@ public class MyService1 : IMyService1
     public void MyService1Start()
     {
         int sleepNum = Convert.ToInt32(Environment.GetEnvironmentVariable("SLEEP_SECONDS"));
-        Thread.Sleep(this.GetRandomNumber(sleepNum) * 1000);
+        Thread.Sleep(GetRandomNumber(sleepNum) * 1000);
     }
 
     // write random generator between 1 and 60 
@@ -89,9 +89,7 @@ public class MyService1 : IMyService1
 
     public string ReturnSomething()
     {
-        string tempString = ReturnSomething();
-
-        return "Hello from MyService1! with + "+ tempString;
+        return "Hello from MyService1!";
     }
 }
 
@@ -100,7 +98,7 @@ public class MyService2 : IMyService2
     public void MyService2Start()
     {
         int sleepNum = Convert.ToInt32(Environment.GetEnvironmentVariable("SLEEP_SECONDS"));
-        Thread.Sleep(this.GetRandomNumber(sleepNum) * 1000);
+        Thread.Sleep(GetRandomNumber(sleepNum) * 1000);
     }
 
     // write random generator between 1 and 60 
@@ -112,8 +110,6 @@ public class MyService2 : IMyService2
 
     public string ReturnSomething()
     {
-        string tempString = ReturnSomething();
-
-        return "Hello from MyService2 with + "+ tempString;
+        return "Hello from MyService2!";
     }
 }
