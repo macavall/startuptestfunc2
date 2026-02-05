@@ -13,10 +13,8 @@ internal class Program
     {
         try
         {
-            var config = new TelemetryConfiguration()
-            {
-                ConnectionString = Environment.GetEnvironmentVariable("APPLICATIONINSIGHTS_CONNECTION_STRING")
-            };
+            var config = TelemetryConfiguration.CreateDefault();
+            config.ConnectionString = Environment.GetEnvironmentVariable("APPLICATIONINSIGHTS_CONNECTION_STRING");
 
             var telemetryClient = new TelemetryClient(config);
 
@@ -50,6 +48,10 @@ internal class Program
             telemetryClient.TrackTrace($"MyService2 Complete  timestamp: {DateTime.UtcNow}");
             Console.WriteLine($"Current timestamp: {DateTime.UtcNow}");
 
+            // Flush telemetry before starting the host to ensure startup logs are sent
+            telemetryClient.Flush();
+            Thread.Sleep(1000); // Give time for the flush to complete
+
             builder.Build().Run();
 
         }
@@ -72,7 +74,7 @@ public class MyService1
     private int GetRandomNumber(int max)
     {
         Random random = new Random();
-        return random.Next(1, max + 1);
+        return random.Next(10, max + 1);
     }
 
     public string ReturnSomething()
@@ -94,7 +96,7 @@ public class MyService2
     private int GetRandomNumber(int max)
     {
         Random random = new Random();
-        return random.Next(1, max + 1);
+        return random.Next(10, max + 1);
     }
 
     public string ReturnSomething()
