@@ -83,6 +83,15 @@ public class MyService1
     }
 }
 
+public interface IMyService1
+{
+    string ReturnSomething();
+}
+
+public interface IMyService2
+{
+    string ReturnSomething();
+}
 
 public class MyService2
 {
